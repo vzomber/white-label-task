@@ -1,14 +1,16 @@
 import { Link } from "react-router";
+import { Header } from "../../components";
+import { PAGES_URL } from "../../router";
 
 export const BillingPage = () => {
   return (
     <div>
-      <h1>Billing Page</h1>
+      <Header>Billing Page</Header>
       <p>Manage your billing information and view invoices.</p>
 
-      <Link to="/">Go to Home Page</Link>
+      <Link to={PAGES_URL.HOME}>Go to Home Page</Link>
       <br />
-      <Link to="/auth/login">Go to Login Page</Link>
+      <Link to={PAGES_URL.LOGIN}>Go to Login Page</Link>
     </div>
   );
 };
