@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter white-label-task dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
