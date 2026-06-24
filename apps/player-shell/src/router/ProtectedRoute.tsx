@@ -1,9 +1,9 @@
 import { Navigate, Outlet } from "react-router";
-import { useAuth } from "../hooks";
+import { useGetCurrentUser } from "../query";
 import { PAGES_URL } from ".";
 
 export const ProtectedRoute = () => {
-  const { user, isLoading } = useAuth();
+  const { data: user, isLoading } = useGetCurrentUser();
 
   if (isLoading) return <div>Loading...</div>;
 

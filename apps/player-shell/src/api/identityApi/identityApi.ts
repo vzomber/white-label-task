@@ -1,0 +1,32 @@
+import { mockUser, mockUsers, type MockUser } from "../../mocks";
+import { delay } from "../utilities";
+import type { LoginPayload } from "./types";
+
+export const identityApi = {
+  login: async ({ email, password }: LoginPayload) => {
+    await delay(500);
+
+    const user = mockUsers.find(
+      (user) => user.email === email && user.password === password,
+    );
+
+    if (!user) {
+      throw new Error("Invalid email or password");
+    }
+
+    return {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+    };
+  },
+  getUser: async (): Promise<MockUser> => {
+    await delay(500);
+
+    if (!mockUser?.id) {
+      throw new Error("User is not authenticated");
+    }
+
+    return mockUser;
+  },
+};
