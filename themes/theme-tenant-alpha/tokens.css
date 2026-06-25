@@ -2,6 +2,7 @@
 :root,
 [data-theme="default"] {
   --color-primary: #000;
+  --color-primary-hover: #333;
   --color-text: #fff;
 
   --radius-base: 8px;
@@ -11,6 +12,7 @@
 /* Alpha — Purple Brand */
 [data-theme="alpha"] {
   --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
   --color-text: #fff;
 
   --radius-base: 4px;

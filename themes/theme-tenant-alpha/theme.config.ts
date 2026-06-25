@@ -3,6 +3,7 @@ export const themeConfig = {
   name: "Tenant Alpha",
   colors: {
     colorPrimary: "var(--color-primary)",
+    colorPrimaryHover: "var(--color-primary-hover)",
     colorSurface: "var(--color-surface)",
     colorText: "var(--color-text)",
     radiusBase: "var(--radius-base)",

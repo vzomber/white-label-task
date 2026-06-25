@@ -4,3 +4,8 @@
   color: var(--color-text);
   font-family: var(--font-brand);
 }
+
+.BrandButton:hover {
+  background: var(--color-primary-hover);
+  cursor: pointer;
+}

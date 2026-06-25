@@ -4,3 +4,11 @@ export interface MockUser {
   password: string;
   name: string;
 }
+
+export interface BillingPlan {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  features: string[];
+}
