@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { BrandButton } from "@themes/theme-tenant-alpha";
-import { Header } from "../../components";
 import { useLogin } from "../../query";
 import { queryClient } from "../../main";
 import { PAGES_URL } from "../../router";
@@ -37,9 +36,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <div>
-      <Header>Login Page</Header>
-
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md mx-auto mt-8 p-4 border rounded-xl">
         <p className="text-xl text-white -mx-4 -mt-4 p-4 rounded-t-lg bg-black mb-4 font-semibold">
           Please enter your credentials

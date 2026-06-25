@@ -1,17 +1,11 @@
-import { Link } from "react-router";
 import { Header } from "../../components";
-import { PAGES_URL } from "../../router";
 import { billingPlans } from "../../mocks";
 import { BrandCard } from "@themes/theme-tenant-alpha";
 
 export const BillingPage = () => {
   return (
     <div>
-      <Header>Billing Page</Header>
-      <Link className="ml-2 mt-2 text-blue-700" to={PAGES_URL.HOME}>
-        Back Home
-      </Link>
-
+      <Header />
       <section className="max-w-5xl mx-auto space-y-8 p-4">
         <div>
           <h1 className="text-2xl font-semibold text-text">Billing</h1>
