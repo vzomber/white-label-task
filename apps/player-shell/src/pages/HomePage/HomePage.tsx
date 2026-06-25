@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useTenant } from "../../TenantContext";
 import { Header } from "../../components";
 import { PAGES_URL } from "../../router";
+import { BrandButton } from "@themes/theme-tenant-alpha";
 
 export const HomePage = () => {
   const { brandId } = useTenant();
@@ -16,6 +17,7 @@ export const HomePage = () => {
         Go to Login Page
       </Link>
       <Link to={PAGES_URL.BILLING}>Go to Billing Page</Link>
+      <BrandButton> 1212 </BrandButton>
     </div>
   );
 };
