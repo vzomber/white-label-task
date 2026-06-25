@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+
+# Coverage
+coverage
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode
+.idea
+
+# TypeScript
+*.tsbuildinfo

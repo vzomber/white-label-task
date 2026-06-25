@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
+import { BrandButton } from "@themes/theme-tenant-alpha";
 import { Header } from "../../components";
 import { useLogin } from "../../query";
 import { queryClient } from "../../main";
@@ -82,9 +83,9 @@ export const LoginPage = () => {
               )}
             </div>
 
-            <button type="submit" disabled={isSubmitting}>
+            <BrandButton type="submit" disabled={isSubmitting}>
               Login
-            </button>
+            </BrandButton>
           </form>
         </div>
       </div>

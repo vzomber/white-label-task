@@ -1,0 +1,1 @@
+1. The fallback theme is placed inside the shell app, because task specifically requires to create a separate package theme-tenant-alpha. Also, if we imagine any kind of trouble with the package, it's nice to have a fallback closer to the code base.
