@@ -1,6 +1,6 @@
 import type { BillingPlan } from "./types";
 
-export const billingPlans: BillingPlan[] = [
+export const mockBillingPlans: BillingPlan[] = [
   {
     id: "starter",
     name: "Starter",

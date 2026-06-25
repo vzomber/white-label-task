@@ -1,5 +1,6 @@
 import { queryClient } from "../../main";
 import { mockUsers, type MockUser } from "../../mocks";
+import { CommonQueryKeys } from "../../query";
 import { delay } from "../utilities";
 import type { LoginPayload } from "./types";
 
@@ -24,7 +25,9 @@ export const identityApi = {
   getUser: async () => {
     await delay(500);
 
-    const user = queryClient.getQueryData<MockUser>(["current-user"]);
+    const user = queryClient.getQueryData<MockUser>([
+      CommonQueryKeys.CURRENT_USER,
+    ]);
 
     return user ?? null;
   },

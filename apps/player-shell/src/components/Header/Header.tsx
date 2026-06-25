@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { useGetCurrentUser } from "../../query";
+import { CommonQueryKeys, useGetCurrentUser } from "../../query";
 import { ThemeSwitcher } from "../Select";
 import { PAGES_URL } from "../../router";
 import { queryClient } from "../../main";
@@ -9,7 +9,8 @@ export const Header = () => {
   const isHomePage = window.location.pathname === "/";
   const isUserLoggedIn = !!user;
 
-  const handleLogout = () => queryClient.setQueryData(["current-user"], user);
+  const handleLogout = () =>
+    queryClient.setQueryData([CommonQueryKeys.CURRENT_USER], user);
 
   return (
     <h1 className="bg-gray-800 text-white p-4">

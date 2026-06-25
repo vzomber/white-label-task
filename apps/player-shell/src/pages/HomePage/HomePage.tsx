@@ -7,6 +7,12 @@ import { useTenant } from "../../TenantContext";
 export const HomePage = () => {
   const { brandId, currency, locale } = useTenant();
 
+  const userDetails = [
+    { label: "Brand ID", value: brandId },
+    { label: "Locale", value: locale },
+    { label: "Currency", value: currency },
+  ];
+
   return (
     <>
       <Header />
@@ -29,20 +35,15 @@ export const HomePage = () => {
           </h2>
 
           <div className="space-y-4">
-            <div className="flex justify-between border-b border-border pb-3">
-              <span className="text-text-muted">Brand ID</span>
-              <span className="font-medium text-text">{brandId}</span>
-            </div>
-
-            <div className="flex justify-between border-b border-border pb-3">
-              <span className="text-text-muted">Locale</span>
-              <span className="font-medium text-text">{locale}</span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="text-text-muted">Currency</span>
-              <span className="font-medium text-text">{currency}</span>
-            </div>
+            {userDetails.map(({ label, value }) => (
+              <div
+                key={label}
+                className="flex justify-between border-b border-border pb-3"
+              >
+                <span className="text-text-muted">{label}</span>
+                <span className="font-medium text-text">{value}</span>
+              </div>
+            ))}
           </div>
         </section>
 

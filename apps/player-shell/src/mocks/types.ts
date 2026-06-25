@@ -1,12 +1,15 @@
+type subscriptionId = "starter" | "business" | "pro";
+
 export interface MockUser {
   id: string;
   email: string;
   password: string;
   name: string;
+  subscription: BillingPlan | null;
 }
 
 export interface BillingPlan {
-  id: string;
+  id: subscriptionId;
   name: string;
   price: number;
   description: string;

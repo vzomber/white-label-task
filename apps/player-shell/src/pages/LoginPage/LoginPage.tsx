@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { BrandButton } from "@themes/theme-tenant-alpha";
-import { useLogin } from "../../query";
+import { CommonQueryKeys, useLogin } from "../../query";
 import { queryClient } from "../../main";
 import { PAGES_URL } from "../../router";
 import type { LoginFormValues } from "./types";
@@ -25,7 +25,7 @@ export const LoginPage = () => {
   const onSubmit = (values: LoginFormValues) => {
     handleLogin(values, {
       onSuccess: (user) => {
-        queryClient.setQueryData(["current-user"], user);
+        queryClient.setQueryData([CommonQueryKeys.CURRENT_USER], user);
         navigate(PAGES_URL.HOME);
         console.log("Login successful. Redirecting to home page.");
       },
