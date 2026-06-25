@@ -1,0 +1,6 @@
+.BrandButton {
+  background: var(--color-primary);
+  border-radius: var(--radius-base);
+  color: var(--color-text);
+  font-family: var(--font-brand);
+}

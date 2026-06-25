@@ -41,41 +41,39 @@ export const LoginPage = () => {
       <Header>Login Page</Header>
 
       <div className="w-full max-w-md mx-auto mt-8 p-4 border rounded-xl">
-        <p className="text-xl mb-4 font-semibold">
-          Please enter your credentials to log in
+        <p className="text-xl text-white -mx-4 -mt-4 p-4 rounded-t-lg bg-black mb-4 font-semibold">
+          Please enter your credentials
         </p>
         <div>
           <form
             className="flex flex-col gap-2"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div>
-              <label>
-                Email
-                <input
-                  className="ml-2 border rounded"
-                  type="email"
-                  {...register("email", {
-                    required: "Email is required",
-                  })}
-                />
-              </label>
+            <div className="flex justify-between mr-30">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                className="border rounded"
+                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                })}
+              />
               {errors.email && (
                 <p className="text-xs text-red-500">{errors.email.message}</p>
               )}
             </div>
 
-            <div>
-              <label>
-                Password
-                <input
-                  className="ml-2 border rounded"
-                  type="password"
-                  {...register("password", {
-                    required: "Password is required",
-                  })}
-                />
-              </label>
+            <div className="flex justify-between mr-30">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                className="border rounded"
+                type="password"
+                {...register("password", {
+                  required: "Password is required",
+                })}
+              />
               {errors.password && (
                 <p className="text-xs text-red-500">
                   {errors.password.message}

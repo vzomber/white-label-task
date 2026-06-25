@@ -1,9 +1,8 @@
-import { ButtonHTMLAttributes } from "react";
+import styles from "./BrandButton.module.css";
+import { ButtonProps } from "./types";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const BrandButton = ({ children, ...props }: ButtonProps) => (
-  <button className="brand-button" {...props}>
+export const BrandButton = ({ children, onClick }: ButtonProps) => (
+  <button className={styles.BrandButton} onClick={onClick}>
     {children}
   </button>
 );

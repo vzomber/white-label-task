@@ -1,9 +1,18 @@
-:root {
-  --color-primary: #2563eb;
-  --color-surface: #eef4ff;
-  --color-text: #0f172a;
+/* Default — Modern Black */
+:root,
+[data-theme="default"] {
+  --color-primary: #000;
+  --color-text: #fff;
 
-  --radius-md: 18px;
+  --radius-base: 8px;
+  --font-brand: Inter, system-ui, sans-serif;
+}
 
-  --spacing-md: 16px;
+/* Alpha — Purple Brand */
+[data-theme="alpha"] {
+  --color-primary: #7c3aed;
+  --color-text: #fff;
+
+  --radius-base: 4px;
+  --font-brand: "Poppins", system-ui, sans-serif;
 }
