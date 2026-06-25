@@ -20,5 +20,3 @@ export const mockUsers: MockUser[] = [
     name: "Alex Williams",
   },
 ];
-
-export const mockUser: MockUser | null = null;

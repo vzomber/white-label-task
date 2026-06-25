@@ -6,4 +6,5 @@ export const useGetCurrentUser = () =>
     queryKey: ["current-user"],
     queryFn: () => identityApi.getUser(),
     retry: false,
+    staleTime: Infinity,
   });

@@ -1,4 +1,5 @@
-import { mockUser, mockUsers, type MockUser } from "../../mocks";
+import { queryClient } from "../../main";
+import { mockUsers, type MockUser } from "../../mocks";
 import { delay } from "../utilities";
 import type { LoginPayload } from "./types";
 
@@ -20,13 +21,11 @@ export const identityApi = {
       name: user.name,
     };
   },
-  getUser: async (): Promise<MockUser> => {
+  getUser: async () => {
     await delay(500);
 
-    if (!mockUser?.id) {
-      throw new Error("User is not authenticated");
-    }
+    const user = queryClient.getQueryData<MockUser>(["current-user"]);
 
-    return mockUser;
+    return user ?? null;
   },
 };
