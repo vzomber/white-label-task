@@ -8,7 +8,7 @@ import type { LoginFormValues } from "./types";
 import { mockUsers } from "../../mocks";
 
 export const LoginPage = () => {
-  const { mutate: handleLogin } = useLogin();
+  const { mutate: handleLogin, error: loginError } = useLogin();
   const navigate = useNavigate();
 
   const {
@@ -46,37 +46,48 @@ export const LoginPage = () => {
             className="flex flex-col gap-2"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <div className="flex justify-between mr-30">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                className="border rounded"
-                type="email"
-                {...register("email", {
-                  required: "Email is required",
-                })}
-              />
+            <div>
+              <div className="flex justify-between mr-30">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  className="border rounded"
+                  type="email"
+                  aria-invalid={!!errors.email}
+                  {...register("email", {
+                    required: "Email is required",
+                  })}
+                />
+              </div>
               {errors.email && (
                 <p className="text-xs text-red-500">{errors.email.message}</p>
               )}
             </div>
 
-            <div className="flex justify-between mr-30">
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                className="border rounded"
-                type="password"
-                {...register("password", {
-                  required: "Password is required",
-                })}
-              />
+            <div>
+              <div className="flex justify-between mr-30">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  className="border rounded"
+                  type="password"
+                  aria-invalid={!!errors.password}
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                />
+              </div>
               {errors.password && (
                 <p className="text-xs text-red-500">
                   {errors.password.message}
                 </p>
               )}
             </div>
+            {loginError && (
+              <p className="text-xs text-red-500">
+                {loginError.message || "Login failed"}
+              </p>
+            )}
 
             <BrandButton type="submit" disabled={isSubmitting}>
               Login

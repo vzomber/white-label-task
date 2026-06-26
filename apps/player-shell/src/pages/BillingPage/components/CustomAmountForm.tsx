@@ -4,10 +4,7 @@ import { queryClient } from "../../../main";
 import { CommonQueryKeys, useCustomSubscription } from "../../../query";
 import type { BillingPlan, MockUser } from "../../../mocks";
 import { delay } from "../../../api/utilities";
-
-type BillingAmountForm = {
-  amount: number;
-};
+import type { BillingAmountForm } from "./types";
 
 export const CustomAmountForm = () => {
   const {
@@ -55,9 +52,16 @@ export const CustomAmountForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-6 max-w-sm">
-      <label className="block text-sm font-medium text-text">Amount</label>
+      <label
+        className="block text-sm font-medium text-text"
+        htmlFor="custom-amount"
+      >
+        Amount
+      </label>
 
       <input
+        id="custom-amount"
+        aria-invalid={!!errors.amount}
         type="number"
         placeholder="Enter amount"
         className="mt-2 w-full rounded-lg border border-border bg-background px-3 py-2 text-text outline-none focus:border-primary"

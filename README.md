@@ -1,7 +1,8 @@
 ## Run instructions
 
+````text
 pnpm install
-pnpm dev
+pnpm dev```
 
 ## Project general structure
 
@@ -28,4 +29,4 @@ white-label-task/
 ├─ README.md
 ├─ DECISIONS.md
 └─ ARCHITECTURE.md
-```
+````
