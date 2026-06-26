@@ -1,6 +1,9 @@
 import { BrandButton, BrandCard } from "@themes/theme-tenant-alpha";
-import { CommonQueryKeys, useCancelSubscription } from "../../../query";
-import { queryClient } from "../../../main";
+import {
+  CommonQueryKeys,
+  queryClient,
+  useCancelSubscription,
+} from "../../../query";
 import type { YourSubscriptionProps } from "./types";
 
 export const YourSubscription = ({

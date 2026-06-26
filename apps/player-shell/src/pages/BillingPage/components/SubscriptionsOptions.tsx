@@ -1,8 +1,11 @@
 import { BrandButton, BrandCard } from "@themes/theme-tenant-alpha";
 import { mockBillingPlans, type MockUser } from "../../../mocks";
 import { CustomAmountForm } from "./CustomAmountForm";
-import { CommonQueryKeys, useGetSubscriptionById } from "../../../query";
-import { queryClient } from "../../../main";
+import {
+  CommonQueryKeys,
+  queryClient,
+  useGetSubscriptionById,
+} from "../../../query";
 
 export const SubscriptionOptions = () => {
   const { mutate: getSubscription, isPending } = useGetSubscriptionById();

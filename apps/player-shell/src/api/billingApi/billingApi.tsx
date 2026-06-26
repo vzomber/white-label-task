@@ -1,6 +1,5 @@
-import { queryClient } from "../../main";
 import { mockBillingPlans, type MockUser } from "../../mocks";
-import { CommonQueryKeys } from "../../query";
+import { CommonQueryKeys, queryClient } from "../../query";
 import { delay } from "../utilities";
 import type { GetSubscriptionProps } from "./types";
 

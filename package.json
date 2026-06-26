@@ -5,7 +5,8 @@
     "dev": "pnpm --filter player-shell dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
-    "lint": "pnpm --filter player-shell lint"
+    "lint": "pnpm --filter player-shell lint",
+    "test": "pnpm --filter player-shell test"
   },
   "devDependencies": {
     "typescript": "^5.0.0"

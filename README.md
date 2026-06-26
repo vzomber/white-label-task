@@ -1,8 +1,6 @@
 ## Run instructions
 
-````text
-pnpm install
-pnpm dev```
+pnpm install && pnpm dev
 
 ## Project general structure
 
@@ -29,4 +27,12 @@ white-label-task/
 ├─ README.md
 ├─ DECISIONS.md
 └─ ARCHITECTURE.md
-````
+```
+
+## Notes
+
+- The mock APIs include a delay to test the loading state. The delay can be changed in the API layer.
+- The project is configured as a pnpm workspace. Common scripts can be run from the project root, for example:
+  - `pnpm dev`
+  - `pnpm lint`
+  - `pnpm test`

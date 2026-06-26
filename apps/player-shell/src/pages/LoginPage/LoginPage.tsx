@@ -1,26 +1,21 @@
 import { useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { BrandButton } from "@themes/theme-tenant-alpha";
-import { CommonQueryKeys, useLogin } from "../../query";
-import { queryClient } from "../../main";
+import { CommonQueryKeys, queryClient, useLogin } from "../../query";
 import { PAGES_URL } from "../../router";
-import type { LoginFormValues } from "./types";
 import { mockUsers } from "../../mocks";
+import type { LoginFormValues } from "./types";
 
 export const LoginPage = () => {
-  const { mutate: handleLogin, error: loginError } = useLogin();
+  const { mutate: handleLogin, isPending, error: loginError } = useLogin();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
+    setValues,
     formState: { errors, isSubmitting },
-  } = useForm<LoginFormValues>({
-    defaultValues: {
-      email: mockUsers[0].email,
-      password: mockUsers[0].password,
-    },
-  });
+  } = useForm<LoginFormValues>();
 
   const onSubmit = (values: LoginFormValues) => {
     handleLogin(values, {
@@ -37,7 +32,7 @@ export const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="w-full max-w-md mx-auto mt-8 p-4 border rounded-xl">
+      <div className="w-full max-w-md mx-auto p-4 border rounded-xl">
         <p className="text-xl text-white -mx-4 -mt-4 p-4 rounded-t-lg bg-black mb-4 font-semibold">
           Please enter your credentials
         </p>
@@ -89,9 +84,27 @@ export const LoginPage = () => {
               </p>
             )}
 
-            <BrandButton type="submit" disabled={isSubmitting}>
-              Login
-            </BrandButton>
+            <div className="flex justify-center items-center gap-3 mt-4 w-full">
+              <BrandButton
+                isLoading={isPending}
+                type="submit"
+                disabled={isSubmitting}
+              >
+                Login
+              </BrandButton>
+              <button
+                type="button"
+                className="bg-red-500 px-3 py-1.5 rounded-md cursor-pointer text-sm text-white hover:underline"
+                onClick={() =>
+                  setValues({
+                    email: mockUsers[0].email,
+                    password: mockUsers[0].password,
+                  })
+                }
+              >
+                Autofill
+              </button>
+            </div>
           </form>
         </div>
       </div>

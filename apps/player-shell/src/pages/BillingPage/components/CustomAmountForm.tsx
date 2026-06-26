@@ -1,7 +1,10 @@
 import { BrandButton } from "@themes/theme-tenant-alpha";
 import { useForm } from "react-hook-form";
-import { queryClient } from "../../../main";
-import { CommonQueryKeys, useCustomSubscription } from "../../../query";
+import {
+  CommonQueryKeys,
+  queryClient,
+  useCustomSubscription,
+} from "../../../query";
 import type { BillingPlan, MockUser } from "../../../mocks";
 import { delay } from "../../../api/utilities";
 import type { BillingAmountForm } from "./types";

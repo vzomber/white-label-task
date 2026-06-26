@@ -1,8 +1,7 @@
 import { Link } from "react-router";
-import { CommonQueryKeys, useGetCurrentUser } from "../../query";
+import { CommonQueryKeys, queryClient, useGetCurrentUser } from "../../query";
 import { ThemeSwitcher } from "../Select";
 import { PAGES_URL } from "../../router";
-import { queryClient } from "../../main";
 
 export const Header = () => {
   const { data: user } = useGetCurrentUser();
