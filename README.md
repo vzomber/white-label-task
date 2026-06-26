@@ -31,7 +31,7 @@ white-label-task/
 
 ## Notes
 
-- The mock APIs include a delay to test the loading state. The delay can be changed in the API layer.
+- The mock APIs include a delay to test the loading state. The delay can be changed in the .env file. Default is 500ms.
 - The project is configured as a pnpm workspace. Common scripts can be run from the project root, for example:
   - `pnpm dev`
   - `pnpm lint`

@@ -22,7 +22,7 @@ export const CustomAmountForm = () => {
   } = useForm<BillingAmountForm>();
 
   const onSubmit = async (formData: BillingAmountForm) => {
-    await delay(500);
+    await delay();
 
     const updateData: Partial<BillingPlan> = {
       id: "custom",

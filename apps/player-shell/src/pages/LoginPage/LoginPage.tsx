@@ -22,10 +22,6 @@ export const LoginPage = () => {
       onSuccess: (user) => {
         queryClient.setQueryData([CommonQueryKeys.CURRENT_USER], user);
         navigate(PAGES_URL.HOME);
-        console.log("Login successful. Redirecting to home page.");
-      },
-      onError: (error) => {
-        console.error("Login failed:", error);
       },
     });
   };
@@ -94,7 +90,7 @@ export const LoginPage = () => {
               </BrandButton>
               <button
                 type="button"
-                className="bg-red-500 px-3 py-1.5 rounded-md cursor-pointer text-sm text-white hover:underline"
+                className="bg-red-500 px-3 py-1.5 rounded-md cursor-pointer text-sm text-white hover:bg-red-600"
                 onClick={() =>
                   setValues({
                     email: mockUsers[0].email,

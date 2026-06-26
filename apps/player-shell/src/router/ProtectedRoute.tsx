@@ -8,7 +8,6 @@ export const ProtectedRoute = () => {
   if (isLoading) return <div>Loading...</div>;
 
   if (!user) {
-    console.warn("User is not authenticated. Redirecting to login page.");
     return <Navigate to={PAGES_URL.LOGIN} replace />;
   }
 

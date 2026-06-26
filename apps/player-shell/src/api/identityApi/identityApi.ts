@@ -5,7 +5,7 @@ import type { LoginPayload } from "./types";
 
 export const identityApi = {
   login: async ({ email, password }: LoginPayload) => {
-    await delay(500);
+    await delay();
 
     const user = mockUsers.find(
       (user) => user.email === email && user.password === password,
@@ -22,7 +22,7 @@ export const identityApi = {
     };
   },
   getUser: async () => {
-    await delay(500);
+    await delay();
 
     const user = queryClient.getQueryData<MockUser>([
       CommonQueryKeys.CURRENT_USER,

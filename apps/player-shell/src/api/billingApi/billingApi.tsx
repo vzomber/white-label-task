@@ -5,7 +5,7 @@ import type { GetSubscriptionProps } from "./types";
 
 export const billingApi = {
   createCustomSubscription: async (planDetails: GetSubscriptionProps) => {
-    await delay(500);
+    await delay();
 
     return {
       id: planDetails.id ?? "custom",
@@ -16,7 +16,7 @@ export const billingApi = {
     };
   },
   getSubscriptionById: async (id: string) => {
-    await delay(500);
+    await delay();
 
     const plan = mockBillingPlans.find((plan) => plan.id === id);
 
@@ -27,7 +27,7 @@ export const billingApi = {
     return plan;
   },
   cancelSubscription: async () => {
-    await delay(500);
+    await delay();
 
     const user = queryClient.getQueryData<MockUser>([
       CommonQueryKeys.CURRENT_USER,
