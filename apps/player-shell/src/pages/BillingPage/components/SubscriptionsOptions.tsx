@@ -1,8 +1,29 @@
-import { BrandCard } from "@themes/theme-tenant-alpha";
-import { mockBillingPlans } from "../../../mocks";
+import { BrandButton, BrandCard } from "@themes/theme-tenant-alpha";
+import { mockBillingPlans, type MockUser } from "../../../mocks";
 import { CustomAmountForm } from "./CustomAmountForm";
+import { CommonQueryKeys, useGetSubscriptionById } from "../../../query";
+import { queryClient } from "../../../main";
 
 export const SubscriptionOptions = () => {
+  const { mutate: getSubscription, isPending } = useGetSubscriptionById();
+
+  const handleGetSubscription = (subscriptionId: string) => {
+    getSubscription(subscriptionId, {
+      onSuccess: (billingData) => {
+        queryClient.setQueryData(
+          [CommonQueryKeys.CURRENT_USER],
+          (oldData: MockUser) => ({
+            ...oldData,
+            subscription: {
+              ...oldData.subscription,
+              ...billingData,
+            },
+          }),
+        );
+      },
+    });
+  };
+
   return (
     <div>
       <div>
@@ -18,9 +39,16 @@ export const SubscriptionOptions = () => {
             key={plan.id}
             description={plan.description}
             features={plan.features}
-            onSelect={() => {}}
             price={plan.price}
             title={plan.name}
+            Button={() => (
+              <BrandButton
+                onClick={() => handleGetSubscription(plan.id)}
+                isLoading={isPending}
+              >
+                {"Choose plan"}
+              </BrandButton>
+            )}
           />
         ))}
       </div>

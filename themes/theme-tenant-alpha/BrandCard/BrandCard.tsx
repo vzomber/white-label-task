@@ -7,7 +7,7 @@ export const BrandCard = ({
   description,
   price,
   features,
-  onSelect,
+  Button,
 }: BrandCardProps) => {
   return (
     <div className={styles.card}>
@@ -25,7 +25,7 @@ export const BrandCard = ({
         ))}
       </ul>
 
-      <BrandButton onClick={onSelect}>Choose plan</BrandButton>
+      <Button />
     </div>
   );
 };

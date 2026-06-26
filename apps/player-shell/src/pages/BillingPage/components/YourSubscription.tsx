@@ -1,13 +1,21 @@
-import { BrandCard } from "@themes/theme-tenant-alpha";
-import type { BillingPlan } from "../../../mocks";
-
-export interface YourSubscriptionProps {
-  subscriptionPlan?: BillingPlan;
-}
+import { BrandButton, BrandCard } from "@themes/theme-tenant-alpha";
+import { CommonQueryKeys, useCancelSubscription } from "../../../query";
+import { queryClient } from "../../../main";
+import type { YourSubscriptionProps } from "./types";
 
 export const YourSubscription = ({
   subscriptionPlan,
 }: YourSubscriptionProps) => {
+  const { mutate: cancelSubscription, isPending } = useCancelSubscription();
+
+  const handleCacelSubscription = () => {
+    cancelSubscription(undefined, {
+      onSuccess: (updatedUser) => {
+        queryClient.setQueryData([CommonQueryKeys.CURRENT_USER], updatedUser);
+      },
+    });
+  };
+
   return (
     <div>
       <div>
@@ -24,7 +32,11 @@ export const YourSubscription = ({
         }
         price={subscriptionPlan?.price || 0}
         features={subscriptionPlan?.features || []}
-        onSelect={() => {}}
+        Button={() => (
+          <BrandButton isLoading={isPending} onClick={handleCacelSubscription}>
+            {"Cancel Subscription"}
+          </BrandButton>
+        )}
       />
     </div>
   );

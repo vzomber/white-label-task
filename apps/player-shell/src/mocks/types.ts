@@ -1,4 +1,4 @@
-type subscriptionId = "starter" | "business" | "pro";
+type subscriptionId = "starter" | "business" | "pro" | "custom";
 
 export interface MockUser {
   id: string;

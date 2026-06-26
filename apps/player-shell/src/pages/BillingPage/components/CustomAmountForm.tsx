@@ -1,8 +1,8 @@
 import { BrandButton } from "@themes/theme-tenant-alpha";
 import { useForm } from "react-hook-form";
 import { queryClient } from "../../../main";
-import { CommonQueryKeys } from "../../../query";
-import type { MockUser } from "../../../mocks";
+import { CommonQueryKeys, useCustomSubscription } from "../../../query";
+import type { BillingPlan, MockUser } from "../../../mocks";
 import { delay } from "../../../api/utilities";
 
 type BillingAmountForm = {
@@ -11,28 +11,45 @@ type BillingAmountForm = {
 
 export const CustomAmountForm = () => {
   const {
+    mutate: createCustomSubscription,
+    error,
+    isPending,
+  } = useCustomSubscription();
+  const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<BillingAmountForm>();
 
-  const onSubmit = async (data: BillingAmountForm) => {
+  const onSubmit = async (formData: BillingAmountForm) => {
     await delay(500);
-    console.log("Submitted amount:", data.amount);
 
+    const updateData: Partial<BillingPlan> = {
+      id: "custom",
+      name: "Custom",
+      description: "Custom subscription",
+      price: formData.amount,
+      features: ["Very special treatment"],
+    };
+
+    createCustomSubscription(updateData, {
+      onSuccess: (data) => {
+        updateCurrentUserSubscription(data);
+      },
+    });
+  };
+
+  const updateCurrentUserSubscription = (subscriptionData: BillingPlan) => {
     queryClient.setQueryData(
       [CommonQueryKeys.CURRENT_USER],
-      (oldData: MockUser) => {
-        return {
-          ...oldData,
-          subscription: {
-            ...oldData.subscription,
-            description: `Custom payment`,
-            features: [`Very special treatment`],
-            customAmount: data.amount,
-          },
-        };
-      },
+      (oldData: MockUser) => ({
+        ...oldData,
+        subscription: {
+          ...oldData.subscription,
+          customAmount: subscriptionData.price,
+          ...subscriptionData,
+        },
+      }),
     );
   };
 
@@ -58,12 +75,16 @@ export const CustomAmountForm = () => {
         })}
       />
 
-      {errors.amount && (
-        <p className="mt-2 text-sm text-red-500">{errors.amount.message}</p>
+      {(errors.amount || error) && (
+        <p className="mt-2 text-sm text-red-500">
+          {errors?.amount?.message || error?.message}
+        </p>
       )}
 
       <div className="mt-4">
-        <BrandButton type="submit">Pay custom amount</BrandButton>
+        <BrandButton isLoading={isPending} type="submit">
+          Pay custom amount
+        </BrandButton>
       </div>
     </form>
   );
