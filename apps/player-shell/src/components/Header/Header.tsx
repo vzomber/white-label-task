@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { CommonQueryKeys, queryClient, useGetCurrentUser } from "../../query";
-import { ThemeSwitcher } from "../Select";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 import { PAGES_URL } from "../../router";
 
 export const Header = () => {

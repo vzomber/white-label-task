@@ -19,6 +19,7 @@ export const identityApi = {
       id: user.id,
       email: user.email,
       name: user.name,
+      subscription: user.subscription,
     };
   },
   getUser: async () => {
